@@ -1,6 +1,6 @@
-﻿namespace MIP_Lab
+﻿namespace BusinessLogic
 {
-    internal enum Calificativ
+    public enum Calificativ
     {
         Insuficient = 4,
         Suficient = 5,

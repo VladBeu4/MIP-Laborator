@@ -1,6 +1,6 @@
-﻿namespace MIP_Lab
+﻿namespace BusinessLogic
 {
-    internal class Student
+    public class Student
     {
         public int Age { get; set; }
         public string FirstName { get; set; }

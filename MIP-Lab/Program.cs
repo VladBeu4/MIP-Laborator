@@ -1,4 +1,5 @@
 ﻿using System;
+using BusinessLogic;
 
 namespace MIP_Lab
 {
