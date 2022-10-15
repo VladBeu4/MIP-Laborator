@@ -9,25 +9,11 @@ namespace MIP_Lab
         {
             Console.WriteLine("Hello world!");
 
-            var student = new Student();
-
-            Console.WriteLine("Prenume:");
-            student.FirstName = Console.ReadLine();
-
-            Console.WriteLine("Nume:");
-            student.LastName = Console.ReadLine();
-
-            Console.WriteLine("Varsta:");
-            student.Age = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Calificativ:");
-            student.Nota = (Calificativ)Enum.Parse(typeof(Calificativ), Console.ReadLine(), true);
-
             var studenti = new Student[3]
             {
                 new Student() { FirstName = "Ion", LastName = "Popescu", Age = 23, Nota = Calificativ.Insuficient },
                 new Student() { FirstName = "Andrei", LastName = "Popa", Age = 28, Nota = Calificativ.Bine },
-                student
+                new Student() { FirstName = "Maria", LastName = "Smith", Age = 25, Nota = Calificativ.Excelent },
             };
 
             for (int i = 0; i < 3; i++)
