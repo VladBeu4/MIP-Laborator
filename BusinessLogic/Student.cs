@@ -2,9 +2,7 @@
 {
     public class Student
     {
-        public int Age { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }    
+        private Identitate identitate { get; set; }
         public Calificativ Nota { get; set; }
         public bool? Bursa
         {
@@ -22,9 +20,19 @@
             }
         }
 
+        public Student(string firstName, string lastName, int age)
+        {
+            identitate = new Identitate()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Age = age
+            };
+        }
+
         public override string ToString()
         {
-            return "Studentul " + FirstName + " " + LastName + " are calificativul " + Nota + " cu nota " + (int)Nota + ".";
+            return "Studentul " + identitate.FirstName + " " + identitate.LastName + " are calificativul " + Nota + " cu nota " + (int)Nota + ".";
         }
     }
 }

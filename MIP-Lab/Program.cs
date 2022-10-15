@@ -11,9 +11,9 @@ namespace MIP_Lab
 
             var studenti = new Student[3]
             {
-                new Student() { FirstName = "Ion", LastName = "Popescu", Age = 23, Nota = Calificativ.Insuficient },
-                new Student() { FirstName = "Andrei", LastName = "Popa", Age = 28, Nota = Calificativ.Bine },
-                new Student() { FirstName = "Maria", LastName = "Smith", Age = 25, Nota = Calificativ.Excelent },
+                new Student("Ion", "Popescu", 23) { Nota = Calificativ.Insuficient },
+                new Student("Andrei", "Popa", 28) { Nota = Calificativ.Bine },
+                new Student("Maria", "Smith", 25) { Nota = Calificativ.Excelent }
             };
 
             Console.WriteLine("Studentii cu bursa:");
