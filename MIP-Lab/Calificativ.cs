@@ -1,4 +1,4 @@
-﻿namespace MIP_Lab2
+﻿namespace MIP_Lab
 {
     internal enum Calificativ
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MIP_Lab2
+namespace MIP_Lab
 {
     internal class Program
     {
