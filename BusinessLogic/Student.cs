@@ -6,7 +6,21 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }    
         public Calificativ Nota { get; set; }
-        public bool? Bursa { get; set; }
+        public bool? Bursa
+        {
+            get
+            {
+                switch (Nota)
+                {
+                    case Calificativ.Bine:
+                    case Calificativ.FoarteBine:
+                    case Calificativ.Excelent:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
 
         public override string ToString()
         {

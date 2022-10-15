@@ -16,21 +16,6 @@ namespace MIP_Lab
                 new Student() { FirstName = "Maria", LastName = "Smith", Age = 25, Nota = Calificativ.Excelent },
             };
 
-            for (int i = 0; i < 3; i++)
-            {
-                switch (studenti[i].Nota)
-                {
-                    case Calificativ.Insuficient:
-                    case Calificativ.Suficient:
-                        studenti[i].Bursa = false;
-                        break;
-                    case Calificativ.Bine:
-                    case Calificativ.FoarteBine:
-                    case Calificativ.Excelent:
-                        studenti[i].Bursa = true;
-                        break;
-                }
-            }
             Console.WriteLine("Studentii cu bursa:");
 
             for (int i = 0; i < 3; i++)
