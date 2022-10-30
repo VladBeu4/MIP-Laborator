@@ -37,11 +37,18 @@ namespace MIP_Lab
                 }
             }
 
-            studenti.Sort();
-            Console.WriteLine("Studentii in ordinea notei:");
-            for (var i = 0; i < studenti.Count(); i++)
+            var classroom = new Classroom()
             {
-                Console.WriteLine(studenti[i]);
+                Studenti = studenti,
+                An = 3
+            };
+
+            classroom.Sort();
+
+            Console.WriteLine("Studentii in ordinea notei:");
+            for (var i = 0; i < classroom.Studenti.Count(); i++)
+            {
+                Console.WriteLine(classroom.Studenti[i]);
             }
 
             Console.ReadKey();
