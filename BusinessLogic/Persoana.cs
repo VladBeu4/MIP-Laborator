@@ -25,12 +25,12 @@
             ID = numarUnic++;
         }
 
-        public string GetIdentityAsString()
+        public virtual string GetIdentityAsString()
         {
             return identitate.FirstName + " " +
-                identitate.LastName + " " +
-                "ID " + ID +
-                "Age " + identitate.Age;
+                identitate.LastName +
+                " ID " + ID +
+                " Age " + identitate.Age;
         }
     }
 }

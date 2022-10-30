@@ -26,9 +26,14 @@
         {
         }
 
+        public override string GetIdentityAsString()
+        {
+            return "Studentul " + base.GetIdentityAsString();
+        }
+
         public override string ToString()
         {
-            return "Studentul " + GetIdentityAsString() + " are calificativul " + Nota + " cu nota " + (int)Nota + ".";
+            return GetIdentityAsString() + " are calificativul " + Nota + " cu nota " + (int)Nota + ".";
         }
     }
 }
