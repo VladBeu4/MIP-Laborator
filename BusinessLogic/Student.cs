@@ -31,9 +31,14 @@
             return "Studentul " + base.GetIdentityAsString();
         }
 
+        public override string GetSpecifics()
+        {
+            return "are calificativul " + Nota + " cu nota " + (int)Nota + ".";
+        }
+
         public override string ToString()
         {
-            return GetIdentityAsString() + " are calificativul " + Nota + " cu nota " + (int)Nota + ".";
+            return GetIdentityAsString() + " " + GetSpecifics();
         }
     }
 }

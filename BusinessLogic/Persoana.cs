@@ -1,6 +1,6 @@
 ﻿namespace BusinessLogic
 {
-    public class Persoana
+    public abstract class Persoana
     {
         private static int numarUnic;
 
@@ -32,5 +32,7 @@
                 " ID " + ID +
                 " Age " + identitate.Age;
         }
+
+        public abstract string GetSpecifics();
     }
 }
