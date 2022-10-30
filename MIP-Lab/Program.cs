@@ -43,14 +43,6 @@ namespace MIP_Lab
                 An = 3
             };
 
-            classroom.Sort();
-
-            Console.WriteLine("Studentii in ordinea notei:");
-            for (var i = 0; i < classroom.Studenti.Count(); i++)
-            {
-                Console.WriteLine(classroom.Studenti[i]);
-            }
-
             var penar = new Penar()
             {
                 Creioane = new List<Creion>()
@@ -62,7 +54,19 @@ namespace MIP_Lab
                 }
             };
 
-            penar.Sort();
+            var sortables = new List<ISortable>()
+            {
+                classroom,
+                penar
+            };
+
+            sortables.ForEach(x => x.Sort());
+
+            Console.WriteLine("Studentii in ordinea notei:");
+            for (var i = 0; i < classroom.Studenti.Count(); i++)
+            {
+                Console.WriteLine(classroom.Studenti[i]);
+            }
 
             Console.ReadKey();
         }
