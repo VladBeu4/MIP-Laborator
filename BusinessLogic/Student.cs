@@ -1,6 +1,8 @@
-﻿namespace BusinessLogic
+﻿using System;
+
+namespace BusinessLogic
 {
-    public class Student : Persoana
+    public class Student : Persoana, IComparable<Student>
     {
         public const string UNIVERSITATE = "ULBS";
 
@@ -39,6 +41,11 @@
         public override string ToString()
         {
             return GetIdentityAsString() + " " + GetSpecifics();
+        }
+
+        public int CompareTo(Student other)
+        {
+            return Nota.CompareTo(other.Nota);
         }
     }
 }
