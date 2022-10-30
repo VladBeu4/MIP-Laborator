@@ -4,7 +4,7 @@
     {
         private static int numarUnic;
 
-        protected Identitate identitate { get; set; }
+        public Identitate Identitate { get; set; }
 
         public int ID { get; set; }
 
@@ -15,7 +15,7 @@
 
         public Persoana(string firstName, string lastName, int age)
         {
-            identitate = new Identitate()
+            Identitate = new Identitate()
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -27,10 +27,10 @@
 
         public virtual string GetIdentityAsString()
         {
-            return identitate.FirstName + " " +
-                identitate.LastName +
+            return Identitate.FirstName + " " +
+                Identitate.LastName +
                 " ID " + ID +
-                " Age " + identitate.Age;
+                " Age " + Identitate.Age;
         }
 
         public abstract string GetSpecifics();

@@ -19,23 +19,23 @@ namespace MIP_Lab
             };
 
             Console.WriteLine("Studentii cu bursa:");
+            studenti
+                .Where(x => x.Bursa.Value)
+                .ToList()
+                .ForEach(x => Console.WriteLine(x));
 
-            for (int i = 0; i < 3; i++)
-            {
-                if (studenti[i].Bursa.Value)
-                {
-                    Console.WriteLine(studenti[i]);
-                }
-            }
 
             Console.WriteLine("Studentii fara bursa:");
-            for (int i = 0; i < 3; i++)
-            {
-                if (!studenti[i].Bursa.Value)
-                {
-                    Console.WriteLine(studenti[i]);
-                }
-            }
+            studenti
+                .Where(x => x.Bursa == false)
+                .ToList()
+                .ForEach(x => Console.WriteLine(x));
+
+            Console.WriteLine("Studentii in ordinea numelui:");
+            studenti
+                .OrderBy(x => x.Identitate.FirstName)
+                .ToList()
+                .ForEach(x => Console.WriteLine(x));
 
             var classroom = new Classroom()
             {
@@ -60,7 +60,7 @@ namespace MIP_Lab
                 penar
             };
 
-            sortables.ForEach(x => x.Sort());
+            sortables.ForEach(x => x.Sort()); //Sortarea implicita din ISortable
 
             Console.WriteLine("Studentii in ordinea notei:");
             for (var i = 0; i < classroom.Studenti.Count(); i++)
