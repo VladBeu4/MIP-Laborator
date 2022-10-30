@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BusinessLogic;
 
@@ -7,16 +8,153 @@ namespace MIP_Lab
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static List<Student> CitireDinFisier_1()
         {
-            Console.WriteLine("Hello world!");
+            var lines = File.ReadAllLines("studenti.txt");
 
-            var studenti = new List<Student>()
+            var studenti = new List<Student>();
+
+            for (var i = 0; i < lines.Length; i++)
             {
-                new Student("Ion", "Popescu", 23) { Nota = Calificativ.Insuficient },
-                new Student("Andrei", "Popa", 28) { Nota = Calificativ.Excelent },
-                new Student("Maria", "Smith", 25) { Nota = Calificativ.Bine }
+                var values = lines[i].Split(',');
+
+                var firstName = values[0];
+                var lastName = values[1];
+                var age = uint.Parse(values[2]);
+                var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
+
+                var student = new Student(firstName, lastName, (int)age)
+                {
+                    Nota = calificativ
+                };
+
+                studenti.Add(student);
+            }
+
+            return studenti;
+        }
+
+        private static List<Student> CitireDinFisier_2()
+        {
+            var lines = File.ReadAllLines("studenti.txt");
+
+            return lines.ToList().Select(x =>
+            {
+                var values = x.Split(',');
+
+                var firstName = values[0];
+                var lastName = values[1];
+                var age = uint.Parse(values[2]);
+                var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
+
+                var student = new Student(firstName, lastName, (int)age)
+                {
+                    Nota = calificativ
+                };
+
+                return student;
+            }).ToList();
+        }
+
+        private static List<Student> CitireDinFisier_3()
+        {
+            var lines = File.ReadAllLines("studenti.txt");
+
+            return lines.ToList().Select(x => Parse(x)).ToList();
+        }
+
+        private static Student Parse(string line)
+        {
+            var values = line.Split(',');
+
+            var firstName = values[0];
+            var lastName = values[1];
+            var age = uint.Parse(values[2]);
+            var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
+
+            var student = new Student(firstName, lastName, (int)age)
+            {
+                Nota = calificativ
             };
+
+            return student;
+        }
+
+        private static List<Student> CitireDinFisier_4()
+        {
+            string[] lines = null;
+            while (lines == null)
+            {
+                try
+                {
+                    lines = File.ReadAllLines("studenti.txt");
+                }
+                catch (FileNotFoundException ex)
+                {
+                    Console.WriteLine("Fisierul nu exista!");
+                    Console.ReadKey();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.GetType().Name);
+                    Console.WriteLine("Press any key to try again");
+                    Console.ReadKey();
+                }
+            }
+
+            return lines.ToList().Select(x => Parse5(x)).ToList();
+        }
+
+        private static Student Parse5(string line)
+        {
+            Student student = null;
+
+            try
+            {
+                var values = line.Split(',');
+
+                var firstName = values[0];
+                var lastName = values[1];
+                var age = int.Parse(values[2]);
+
+                if (age < 18)
+                {
+                    throw new StudentAgeException();
+                }
+                var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
+
+                student = new Student(firstName, lastName, age)
+                {
+                    Nota = calificativ
+                };
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("formatex");
+            }
+            catch (StudentAgeException ex)
+            {
+                Console.WriteLine("studentagex");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("argex");
+            }
+
+            return student;
+        }
+
+        public class StudentAgeException : Exception
+        {
+
+        }
+
+        private static void Main(string[] args)
+        {
+            var studenti = CitireDinFisier_4();
+
+            Console.WriteLine("Hello world!");
 
             Console.WriteLine("Studentii cu bursa:");
             studenti

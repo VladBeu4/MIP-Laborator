@@ -55,5 +55,10 @@
       <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="studenti.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
