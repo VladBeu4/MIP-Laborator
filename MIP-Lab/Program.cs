@@ -51,6 +51,19 @@ namespace MIP_Lab
                 Console.WriteLine(classroom.Studenti[i]);
             }
 
+            var penar = new Penar()
+            {
+                Creioane = new List<Creion>()
+                {
+                    new Creion() { Lungime = 3 },
+                    new Creion() { Lungime = 2 },
+                    new Creion() { Lungime = 10 },
+                    new Creion() { Lungime = 7 },
+                }
+            };
+
+            penar.Sort();
+
             Console.ReadKey();
         }
     }
