@@ -1,6 +1,6 @@
 ﻿namespace BusinessLogic
 {
-    internal class Identitate
+    public class Identitate
     {
         public int Age { get; set; }
         public string FirstName { get; set; }

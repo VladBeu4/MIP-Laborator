@@ -1,16 +1,10 @@
 ﻿namespace BusinessLogic
 {
-    public class Student
+    public class Student : Persoana
     {
         public const string UNIVERSITATE = "ULBS";
 
-        private static int numarUnic;
-
-        private Identitate identitate { get; set; }
-
         public Calificativ Nota { get; set; }
-
-        public int ID { get; set; }
 
         public bool? Bursa
         {
@@ -28,21 +22,8 @@
             }
         }
 
-        static Student()
+        public Student(string firstName, string lastName, int age) : base(firstName, lastName, age)
         {
-            numarUnic = 1000;
-        }
-
-        public Student(string firstName, string lastName, int age)
-        {
-            identitate = new Identitate()
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Age = age
-            };
-
-            ID = numarUnic++;
         }
 
         public override string ToString()
