@@ -6,81 +6,9 @@ using BusinessLogic;
 
 namespace MIP_Lab
 {
-    internal class Program
+    internal partial class Program
     {
-        private static List<Student> CitireDinFisier_1()
-        {
-            var lines = File.ReadAllLines("studenti.txt");
-
-            var studenti = new List<Student>();
-
-            for (var i = 0; i < lines.Length; i++)
-            {
-                var values = lines[i].Split(',');
-
-                var firstName = values[0];
-                var lastName = values[1];
-                var age = uint.Parse(values[2]);
-                var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
-
-                var student = new Student(firstName, lastName, (int)age)
-                {
-                    Nota = calificativ
-                };
-
-                studenti.Add(student);
-            }
-
-            return studenti;
-        }
-
-        private static List<Student> CitireDinFisier_2()
-        {
-            var lines = File.ReadAllLines("studenti.txt");
-
-            return lines.ToList().Select(x =>
-            {
-                var values = x.Split(',');
-
-                var firstName = values[0];
-                var lastName = values[1];
-                var age = uint.Parse(values[2]);
-                var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
-
-                var student = new Student(firstName, lastName, (int)age)
-                {
-                    Nota = calificativ
-                };
-
-                return student;
-            }).ToList();
-        }
-
-        private static List<Student> CitireDinFisier_3()
-        {
-            var lines = File.ReadAllLines("studenti.txt");
-
-            return lines.ToList().Select(x => Parse(x)).ToList();
-        }
-
-        private static Student Parse(string line)
-        {
-            var values = line.Split(',');
-
-            var firstName = values[0];
-            var lastName = values[1];
-            var age = uint.Parse(values[2]);
-            var calificativ = (Calificativ)Enum.Parse(typeof(Calificativ), values[3]);
-
-            var student = new Student(firstName, lastName, (int)age)
-            {
-                Nota = calificativ
-            };
-
-            return student;
-        }
-
-        private static List<Student> CitireDinFisier_4()
+        private static List<Student> CitireDinFisier()
         {
             string[] lines = null;
             while (lines == null)
@@ -103,10 +31,14 @@ namespace MIP_Lab
                 }
             }
 
-            return lines.ToList().Select(x => Parse5(x)).ToList();
+            return lines
+                .ToList()
+                .Select(x => Parse(x))
+                .Where(x => x != null)
+                .ToList();
         }
 
-        private static Student Parse5(string line)
+        private static Student Parse(string line)
         {
             Student student = null;
 
@@ -131,30 +63,25 @@ namespace MIP_Lab
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("formatex");
+                Console.WriteLine("Could not parse age!");
             }
             catch (StudentAgeException ex)
             {
-                Console.WriteLine("studentagex");
+                Console.WriteLine("Age less than 18!");
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine("argex");
+                Console.WriteLine("Could not parse enum!");
             }
 
             return student;
         }
 
-        public class StudentAgeException : Exception
-        {
-
-        }
-
         private static void Main(string[] args)
         {
-            var studenti = CitireDinFisier_4();
-
             Console.WriteLine("Hello world!");
+
+            var studenti = CitireDinFisier();
 
             Console.WriteLine("Studentii cu bursa:");
             studenti
