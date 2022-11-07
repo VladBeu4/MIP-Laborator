@@ -6,7 +6,7 @@ using BusinessLogic;
 
 namespace MIP_Lab
 {
-    internal partial class Program
+    internal class Program
     {
         private static List<Student> CitireDinFisier()
         {
