@@ -1,3 +1,4 @@
-﻿Ion,Popescu,20,Insuficiesnt
+﻿Ion,Popescu,20,Insuficient
+f3df,eriuo,20sw,aaa
 Andrei,Popa,28,Excelent
 Maria,Smith,25,Bine
